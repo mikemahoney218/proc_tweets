@@ -16,10 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
+      - name: Install system dependencies
+        run: |
+          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev 
       - name: Install remotes
-        run: Rscript -e 'install.packages("remotes", dependencies = TRUE)'
+        run: Rscript -e 'install.packages("remotes")'
       - name: Install rtweet package
-        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+        run: Rscript -e 'install.packages("rtweet")'
       - name: Install proceduralnames
         run: Rscript -e 'remotes::install_github("mikemahoney218/proceduralnames")'
       - name: Create and post tweet
