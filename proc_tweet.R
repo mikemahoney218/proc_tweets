@@ -6,8 +6,11 @@ proc_tweet_token <- rtweet::create_token(
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
+gemm::gemm_curves(save_args = "tmp.png")
+
 rtweet::post_tweet(
   status = proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
-  token = proc_tweet_token
+  token = proc_tweet_token,
+  media = "tmp.png"
 )
 

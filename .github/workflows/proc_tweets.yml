@@ -18,7 +18,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install system dependencies
         run: |
-          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev 
+          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev
       - name: Cache R packages
         uses: actions/cache@v2
         with:
@@ -26,6 +26,6 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
       - name: Install packages
-        run: Rscript -e 'lapply(c("remotes", "rtweet"), install.packages); remotes::install_github("mikemahoney218/proceduralnames")'
+        run: Rscript -e 'lapply(c("remotes", "rtweet"), install.packages); remotes::install_github("mikemahoney218/proceduralnames"); remotes::install_github("mikemahoney218/gemm")'
       - name: Create and post tweet
         run: Rscript proc_tweet.R
