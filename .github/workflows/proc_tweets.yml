@@ -18,7 +18,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - name: Install system dependencies
         run: |
-          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev
+          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev imagemagick libmagick++-dev libssl-dev
       - name: Cache R packages
         uses: actions/cache@v2
         with:
