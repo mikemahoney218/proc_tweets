@@ -9,9 +9,9 @@ proc_tweet_token <- rtweet::create_token(
 img_post <- gemm::gemm_unsplash_image_lines(Sys.getenv("UNSPLASH_TOKEN"), "tmp.png")
 
 rtweet::post_tweet(
-  status = paste0(proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
-                  img_post$image_credit,
-                  collapse = "\n"),
+  status = paste(proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
+                 img_post$image_credit,
+                 sep = "\n"),
   token = proc_tweet_token,
   media = "tmp.png"
 )
