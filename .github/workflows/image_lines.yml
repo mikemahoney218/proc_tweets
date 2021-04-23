@@ -2,7 +2,7 @@ name: proc_tweet
 
 on:
   schedule:
-    - cron: '5 0,4,8,12,16,20 * * *'
+    - cron: '5 2,6,10,14,18,22 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,12 +13,13 @@ jobs:
       TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
       TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      UNSPLASH_TOKEN: ${{ secrets.UNSPLASH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@master
       - name: Install system dependencies
         run: |
-          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev
+          sudo apt install -y libcurl4-openssl-dev libgit2-dev libssh2-1-dev imagemagick libmagick++-dev libssl-dev
       - name: Cache R packages
         uses: actions/cache@v2
         with:
@@ -30,4 +31,4 @@ jobs:
       - name: Install gemm
         run: Rscript -e 'remotes::install_github("mikemahoney218/gemm")'
       - name: Create and post tweet
-        run: Rscript proc_tweet.R
+        run: Rscript proc_image.R
