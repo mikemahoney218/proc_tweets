@@ -10,6 +10,8 @@ img_post <- gemm::gemm_unsplash_image_lines(Sys.getenv("UNSPLASH_TOKEN"), "tmp.p
 
 rtweet::post_tweet(
   status = paste(proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
+                 " ",
+                 "\n",
                  img_post$image_credit,
                  sep = "\n"),
   token = proc_tweet_token,
