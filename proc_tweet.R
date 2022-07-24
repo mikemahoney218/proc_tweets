@@ -6,11 +6,7 @@ proc_tweet_token <- rtweet::create_token(
   access_secret =   Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
 )
 
-switch(
-  sample(1:2, 1),
-  gemm::gemm_curves(exponent_max_x = 2, xfun = switch(sample(1:2, 1), sin, cos), save_args = "tmp.png"),
-  gemm::gemm_random_walk(exponent_max_x = 2, save_args = "tmp.png")
-)
+gemm::gemm_curves(exponent_max_x = 2, xfun = switch(sample(1:2, 1), sin, cos), save_args = "tmp.png")
 
 rtweet::post_tweet(
   status = proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
