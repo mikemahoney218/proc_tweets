@@ -11,6 +11,7 @@ gemm::gemm_curves(exponent_max_x = 2, xfun = switch(sample(1:2, 1), sin, cos), s
 rtweet::post_tweet(
   status = proceduralnames::make_english_names(1, n_words = sample(2:5, 1)),
   token = proc_tweet_token,
-  media = "tmp.png"
+  media = "tmp.png",
+  media_alt_text = "A plot generated in R. It either displays random points or the outputs of a random walk."
 )
 

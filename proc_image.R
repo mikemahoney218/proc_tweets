@@ -15,6 +15,7 @@ rtweet::post_tweet(
                  img_post$image_credit,
                  sep = "\n"),
   token = proc_tweet_token,
-  media = "tmp.png"
+  media = "tmp.png",
+  media_alt_text = "An image created by a number of horizontal lines, which have more up-and-down wiggles for darker areas of the image."
 )
 
