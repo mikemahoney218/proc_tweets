@@ -29,6 +29,8 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
       - name: Install packages
         run: Rscript -e 'lapply(c("remotes", "rtweet", "proceduralnames"), install.packages)'
+      - name: Install old rtweet
+        run: Rscript -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/rtweet/rtweet_0.7.0.tar.gz", repos = NULL, type = "source")'
       - name: Install gemm
         run: Rscript -e 'remotes::install_github("mikemahoney218/gemm")'
       - name: Create and post tweet
